@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: yuri-and-ruby-candels
+  security:
+    user:
+      name: ""
+      password: ""
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/amihalcea
+    username: amihalcea
+    password: 1234
+  flyway:
+    enabled: true
+
+
+app:
+  secret-key: serversecret
+  algorithm: AES
