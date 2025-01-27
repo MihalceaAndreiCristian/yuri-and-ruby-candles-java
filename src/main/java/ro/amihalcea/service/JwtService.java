@@ -5,6 +5,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +21,11 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class JwtService {
+public class JwtService{
 
 
     private String secretKey;
+
 
     public JwtService() {
         this.secretKey = generateSecretKey();
@@ -30,7 +33,7 @@ public class JwtService {
 
     private String generateSecretKey() {
         try {
-            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
+            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
 
             SecretKey secretKey1 = keyGen.generateKey();
             System.out.println("Secret key : " + secretKey1);

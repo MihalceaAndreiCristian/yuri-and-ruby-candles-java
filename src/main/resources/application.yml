@@ -14,8 +14,8 @@ spring:
     password: 1234
   flyway:
     enabled: true
-
-
+    user: flyway
+    password: flywaypass
 app:
-  secret-key: serversecret
-  algorithm: AES
+    secret-key: serversecret
+    algorithm: AES

@@ -12,10 +12,10 @@ import java.util.Base64;
 @Converter
 public class AttributeEncryptor implements AttributeConverter<String, String> {
 
-    @Value(value="${app.algorithm}")
+    @Value(value="${algorithm}")
     private String algorithm;
     
-    @Value(value = "${app.secret-key}")
+    @Value(value = "${secret-key}")
     private String secretKey;
     
     @Override

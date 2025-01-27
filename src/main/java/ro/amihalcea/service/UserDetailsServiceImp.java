@@ -9,6 +9,8 @@ import ro.amihalcea.model.UserModel;
 import ro.amihalcea.model.UserPrincipal;
 import ro.amihalcea.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class UserDetailsServiceImp implements UserDetailsService {
 
@@ -23,12 +25,12 @@ public class UserDetailsServiceImp implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserModel user = userRepository.findByUsername(username);
-        if (user== null){
+        Optional<UserModel> userOpt = userRepository.findByUsername(username);
+        if (userOpt.isEmpty()){
             System.out.println("UserModel 404.");
             throw new UsernameNotFoundException("UserModel not found.");
         }
-
+        var user = userOpt.get();
         System.out.printf("UserModel with id %s found.\n",user.getId());
 
         return new UserPrincipal(user);
